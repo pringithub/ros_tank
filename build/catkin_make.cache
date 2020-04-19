@@ -1,0 +1,2 @@
+rostank_description
+-DCATKIN_DEVEL_PREFIX=/home/lxu9/rostank_ws/devel -DCMAKE_INSTALL_PREFIX=/home/lxu9/rostank_ws/install -G Unix Makefiles

@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+
+<!-- NOTE: The cad models were made in tinkercad, so they are all relative to each other.
+           To save me a current headache, the joints are all at origin 
+     This might help resolve in the future: http://gazebosim.org/tutorials?tut=guided_i2 -->
+
+<robot name="rostank">
+  <link name="base_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0.08 0"/>
+      <geometry>
+        <mesh filename="package://rostank_description/models/base.stl" 
+              scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+  </link>
+
+  <!-- base_footprint is the projection of base_link into the ground plane
+         this should have the same pose as base_link, as we aren't jumping around -->
+  <!-- better use a static_transform_publisher
+  <joint name="base_link_to_base_footprint_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="base_footprint"/>
+    <origin xyz="0 0 0"/>
+  </joint>
+  <link name="base_footprint">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0.08 0"/>
+    </visual>
+  </link-->
+
+  <joint name="base_link_to_left_tread_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="left_tread"/>
+    <origin xyz="0 0 0"/>
+  </joint>
+  <link name="left_tread">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0.08 0"/>
+      <geometry>
+        <mesh filename="package://rostank_description/models/tread.stl" 
+              scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+  </link>
+
+  <joint name="base_link_to_right_tread_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="right_tread"/>
+    <origin xyz="0 0 0"/>
+  </joint>
+  <link name="right_tread">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0.180 0"/>
+      <geometry>
+        <mesh filename="package://rostank_description/models/tread.stl" 
+              scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+  </link>
+
+
+  <joint name="base_link_to_camera_assy_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="camera_assy"/>
+    <origin xyz="0 0 0"/>
+  </joint>
+  <link name="camera_assy">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0.08 0"/>
+      <geometry>
+        <mesh filename="package://rostank_description/models/camera_assy.stl" 
+              scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+  </link>
+
+
+  <joint name="base_link_to_lidar_jig_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="lidar_jig"/>
+    <origin xyz="0 0 0"/>
+  </joint>
+  <link name="lidar_jig">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0.08 0"/>
+      <geometry>
+        <mesh filename="package://rostank_description/models/jig.stl" 
+              scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+  </link>
+
+
+  <joint name="lidar_jig_link_to_lidar_mesh_joint" type="fixed">
+    <parent link="lidar_jig"/>
+    <child link="lidar_mesh"/>
+    <origin xyz="0 0 0"/>
+  </joint>
+  <link name="lidar_mesh">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0.08 0"/>
+      <geometry>
+        <mesh filename="package://rostank_description/models/lidar.stl" 
+              scale="0.001 0.001 0.001" />
+      </geometry>
+    </visual>
+  </link>
+
+
+  <joint name="base_link_to_lidar_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="lidar"/>
+    <origin xyz="0.02 0 0.29"/>
+  </joint>
+  <link name="lidar">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.01" radius="0.01" />
+      </geometry>
+    </visual>
+  </link>
+
+
+
+</robot>

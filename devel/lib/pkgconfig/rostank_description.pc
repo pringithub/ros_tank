@@ -1,0 +1,8 @@
+prefix=/home/lxu9/rostank_ws/devel
+
+Name: rostank_description
+Description: Description of rostank_description
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/lxu9/rostank_ws/devel/lib 
+Requires: 

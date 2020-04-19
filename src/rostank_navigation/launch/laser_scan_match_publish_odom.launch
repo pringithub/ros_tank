@@ -1,0 +1,22 @@
+
+<launch>
+
+  #### start the laser scan_matcher ##############################
+  ### http://wiki.ros.org/laser_scan_matcher ####################
+
+  <node pkg="laser_scan_matcher" type="laser_scan_matcher_node" 
+    name="laser_scan_matcher_node" output="screen">
+
+    <!-- not sure what to do about fixed_frame ... -->
+    <param name="fixed_frame" value = "odom"/>
+    <param name="max_iterations" value="10"/>
+    <param name="publish_pose_stamped" value="true"/>
+
+  </node>
+
+  ### start PoseStamped to nav_msgs/Odometry ######################
+
+  <node pkg="rostank_navigation" type="tf_to_odom.py"
+    name="tf_to_odom_node" output="screen" />
+
+</launch>

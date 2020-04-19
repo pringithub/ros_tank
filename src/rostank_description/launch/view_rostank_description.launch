@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+ 
+  <include file="$(find rostank_description)/launch/rostank_description.launch" /> 
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find rostank_description)/config/view_rostank.rviz" required="true" />
+
+</launch>
